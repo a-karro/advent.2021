@@ -1,5 +1,4 @@
-with open("data/day01.txt", "r") as f:
-    data = [int(i) for i in f.read().splitlines()]
+data = [int(i) for i in open("data/day01.txt", "r").read().splitlines()]
 
 print("Puzzle 1.1:", sum(1 for a in range(1, len(data)) if data[a] > data[a - 1]))
 

@@ -1,9 +1,6 @@
-with open("data/day02.txt", "r") as f:
-    data = f.read().splitlines()
-
 fwd = d1 = d2 = 0
 
-for i in data:
+for i in open("data/day02.txt", "r").read().splitlines():
     if "forward" in i:
         x = int(i.replace("forward ", ""))
         fwd += x
