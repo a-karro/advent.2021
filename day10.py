@@ -1,16 +1,7 @@
 from functools import reduce
 data = open("data/day10.txt", "r").read().splitlines()
 
-val = {
-    ")": 3,
-    "]": 57,
-    "}": 1197,
-    ">": 25137,
-    "(": 1,
-    "[": 2,
-    "{": 3,
-    "<": 4,
-}
+val = dict(zip("([{<>}])", [1, 2, 3, 4, 25137, 1197, 57, 3]))
 
 pairs = ["()", "[]", "<>", "{}"]
 s = 0
@@ -22,7 +13,7 @@ for d in data:
     try:
         s += next(val[i] for i in d if i in ">}])")
     except StopIteration:
-        inc.append(reduce(lambda a, b: a * 5 + b, [val[v] for v in d[::-1]]))
+        inc.append(reduce(lambda a, b: a * 5 + b, map(val.get, d[::-1])))
 
 inc = sorted(inc)
 
