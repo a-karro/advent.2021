@@ -1,3 +1,4 @@
+from functools import reduce
 data = open("data/day10.txt", "r").read().splitlines()
 
 val = {
@@ -21,10 +22,7 @@ for d in data:
     try:
         s += next(val[i] for i in d if i in ">}])")
     except StopIteration:
-        sc = 0
-        for v in d[::-1]:
-            sc = sc * 5 + val[v]
-        inc.append(sc)
+        inc.append(reduce(lambda a, b: a * 5 + b, [val[v] for v in d[::-1]]))
 
 inc = sorted(inc)
 
