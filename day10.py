@@ -8,8 +8,7 @@ s = 0
 inc = []
 for d in data:
     while any(i in d for i in pairs):
-        for p in pairs:
-            d = d.replace(p, "")
+        d = reduce(lambda a, b: a.replace(b, ""), pairs, d)
     try:
         s += next(val[i] for i in d if i in ">}])")
     except StopIteration:
